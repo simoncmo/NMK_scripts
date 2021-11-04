@@ -4,6 +4,20 @@ library(tidyverse)
 library(qs)
 library(Seurat)
 
+load_nmk_st = function(){
+        ## ST files
+        project_folder = "/diskmnt/Datasets/Spatial_Transcriptomics/Analysis/NMK/NMK_integration_v5"
+        st_path    = 'obj/NMK_merge_v5_11042021.qs'
+
+        message(str_glue('This version load ST from the following:
+                        obj : {st_path}'))
+        # Load
+        obj = qread(st_path)
+        
+        return(obj)
+    }
+
+
 loadakiobj = function(type = c('rna','atac','st')){
     type = match.arg(type)
     switch(type,
